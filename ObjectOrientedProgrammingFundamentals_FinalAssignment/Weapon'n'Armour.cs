@@ -8,26 +8,23 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
 {
     abstract class Weapon_n_Armour
     {
-        private string _name;
-        private int _power;
+        // fields
+        private string _Name;
+        private int _Power;
 
-        public string Name() { return _name; }
-        public int Power() { return _power; }
+        // properties
+        public string Name { get { return _Name; } }
+        public int Power { get { return _Power; } }
 
+        //  setting the name
         public void SetName(string name)
         {
-            if (name.Length > 0)
-            {
-                _name = name;
-            }
+            _Name = name;
         }
+        // setting the power
         public void SetPower(int power)
         {
-            if (power.Length > 0)
-            {
-                _power = power;
-            }
-
+            _Power = power;
         }
     }
 
@@ -35,8 +32,8 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
     {
         public Weapon(string weaponName, int weaponPower)
         {
-            Weapon_n_Armour.SetName(weaponName);
-            Weapon_n_Armour.SetPower(weaponPower);
+            SetName(weaponName);
+            SetPower(weaponPower);
         }
     }
 
@@ -44,8 +41,8 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
     {
         public Armour(string armourName, int armourPower)
         {
-            Weapon_n_Armour.SetName(armourName);
-            Weapon_n_Armour.SetPower(armourPower);
+            SetName(armourName);
+            SetPower(armourPower);
         }
     }
 }
