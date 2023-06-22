@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
 {
@@ -22,8 +23,32 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         public int BaseStrength { get { return _BaseStrength; } }
         public int BaseDefence { get { return _BaseDefence; } }
         public int OriginalHealth { get { return _OriginalHealth; } }
-        public int CurrentHealth { get { return _CurrentHealth; } }
+        public int CurrentHealth { 
+            get { return _CurrentHealth; }
+            set
+            {
+                if (value >= 0)
+                {
+                    _CurrentHealth = value;
+                }
+            }
+        }
+        public int heroWeaponPower { get { return _EquippedWeapon.Power; } }
+        public int heroArmourPower { get { return _EquippedArmour.Power; } }
 
+        public int setCurrentHealth(int damage)
+        {
+            if (CurrentHealth > damage)
+            {
+                CurrentHealth -= damage;
+            }
+            else
+            {
+                CurrentHealth = 0;
+            }
+
+            return CurrentHealth;
+        }
         // Constructor for class Hero
         public Hero(
             string heroName, int baseStrength, int baseDefence, 

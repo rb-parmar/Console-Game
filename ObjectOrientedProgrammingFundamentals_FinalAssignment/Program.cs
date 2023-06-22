@@ -2,6 +2,9 @@
 
 try
 {
+
+
+
     HashSet<Monster> MonsterList = new HashSet<Monster>();
     MonsterList.Add(new Monster("PEKKA", 7, 12, 150));
     MonsterList.Add(new Monster("Electro Dragon", 5, 10, 120));

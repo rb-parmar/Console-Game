@@ -20,7 +20,29 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         public int Strength { get { return _Strength; } }
         public int Defence { get { return _Defence; } }
         public int OriginalHealth { get { return _OriginalHealth; } }
-        public int CurrentHealth { get { return _CurrentHealth; } }
+        public int CurrentHealth { 
+            get { return _CurrentHealth; } 
+            set {
+                if (value >= 0)
+                {
+                    _CurrentHealth = value;
+                }
+            } 
+        }
+
+        // method to calculate currentHealth
+        public int setCurrentHealth(int damage)
+        {
+            if (CurrentHealth > damage)
+            {
+                CurrentHealth -= damage;
+            } else
+            {
+                CurrentHealth = 0;
+            }
+
+            return CurrentHealth;
+        }
 
         // constructor for class Monster
         public Monster(
