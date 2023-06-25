@@ -49,6 +49,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
 
             return CurrentHealth;
         }
+
         // Constructor for class Hero
         public Hero(
             string heroName, int baseStrength, int baseDefence, 
