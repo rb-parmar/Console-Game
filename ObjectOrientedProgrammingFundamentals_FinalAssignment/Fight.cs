@@ -9,7 +9,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
     public class Fight
     {
         // fields
-        private HashSet<Monster> monstersDefeated;
+        private HashSet<Monster> monstersDefeated = new HashSet<Monster>();
         public int fightsWon = 0;
         public int fightsLost = 0;
 
@@ -35,15 +35,15 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             int randomMonster = random.Next(MonsterList.Count);
             Monster monster = MonsterList.ElementAt(randomMonster);
 
-            while (hero.CurrentHealth > 0)
+            while (hero.CurrentHealth == 0 || monster.CurrentHealth != 0)
             {
                 HeroTurn(hero, monster);
-                handleWin(hero, monster, MonsterList);
-                handleLose(hero, monster, MonsterList);
+                Console.WriteLine(handleWin(hero, monster, MonsterList));
+                Console.WriteLine(handleLose(hero, monster, MonsterList));
 
                 MonsterTurn(hero, monster);
-                handleWin(hero, monster, MonsterList);
-                handleLose(hero, monster, MonsterList);
+                Console.WriteLine(handleWin(hero, monster, MonsterList));
+                Console.WriteLine(handleLose(hero, monster, MonsterList));
             }
         }
 
@@ -54,14 +54,15 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             int heroAttack = hero.BaseStrength + hero.heroWeaponPower;
             int damageToMonster = heroAttack - monster.Defence;
 
-            int monsterCurrentHealth = monster.setCurrentHealth(damageToMonster);
+            monster.setCurrentHealth(damageToMonster);
+            int monsterCurrentHealth = monster.CurrentHealth;
 
             // get the remaining monster health in percentage
-            decimal division = (monsterCurrentHealth / monster.OriginalHealth) * 100;
-            int monsterHealthPercentage = Int32.Parse(Math.Truncate(division).ToString());
+            int division = (monsterCurrentHealth / monster.OriginalHealth) * 100;
+            
 
             Console.WriteLine("\nHero attacked the moster!");
-            Console.WriteLine($"Damage: {damageToMonster}  |  Monster's Health: {monsterHealthPercentage} %");
+            Console.WriteLine($"Damage: {damageToMonster}  |  Monster's Health: {division} %");
 
             return monsterCurrentHealth;
         }
@@ -72,14 +73,14 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             int monsterAttack = monster.Strength;
             int damageToHero = (hero.BaseDefence + hero.heroArmourPower) - monsterAttack;
 
-            int heroCurrentHealth = hero.setCurrentHealth(damageToHero);
+            hero.setCurrentHealth(damageToHero);
+            int heroCurrentHealth = hero.CurrentHealth;
 
             // get the remaining hero health in percentage
-            decimal division = (heroCurrentHealth / hero.OriginalHealth) * 100;
-            int heroHealthPercentage = Int32.Parse(Math.Truncate(division).ToString());
+            int division = (heroCurrentHealth / hero.OriginalHealth) * 100;
 
             Console.WriteLine("\nMonster attacked The Hero!");
-            Console.WriteLine($"Damage: {damageToHero}  |  Hero's Health: {heroHealthPercentage}");
+            Console.WriteLine($"Damage: {damageToHero}  |  Hero's Health: {division}");
 
             return heroCurrentHealth;
         }
@@ -108,9 +109,12 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
                 loseStatement = $"\n\nGame Over!!\n You have been defeated by {monster.Name}!\nBetter luck next time.";
             }
 
-            for (int i = 0; i < DefeatedMonsters.Count; i++)
+            if (DefeatedMonsters != null)
             {
-                monsterList.Add(monster);
+                for (int i = 0; i < DefeatedMonsters.Count; i++)
+                {
+                    monsterList.Add(monster);
+                }
             }
 
             return loseStatement;

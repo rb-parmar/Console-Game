@@ -98,6 +98,16 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         
 
         // method to get statistics of the hero
+        /*public void GetHeroStats()
+        {
+            Console.WriteLine(" ~ Hero statistics ~ ");
+            Console.WriteLine($"Name: {Name}");
+            Console.WriteLine($"Base strength: {BaseStrength}");
+            Console.WriteLine($"Base defence: {BaseDefence}");
+            Console.WriteLine($"Hero's original health: {OriginalHealth}");
+            Console.WriteLine($"Hero's current health: {CurrentHealth}");
+        }
+        */
         public void GetHeroStats()
         {
             Console.WriteLine(" ~ Hero statistics ~ ");
@@ -106,6 +116,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             Console.WriteLine($"Base defence: {BaseDefence}");
             Console.WriteLine($"Hero's original health: {OriginalHealth}");
             Console.WriteLine($"Hero's current health: {CurrentHealth}");
+            
         }
 
         // method to get the items the hero is equipped with

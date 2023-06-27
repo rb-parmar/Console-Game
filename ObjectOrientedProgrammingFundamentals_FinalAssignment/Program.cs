@@ -9,18 +9,23 @@ class Program
         Console.WriteLine("Please enter your name:");
         string playerName = Console.ReadLine();
 
+        // initiate a new hero
+        Hero hero = new Hero(playerName, 9, 6, 100);
+
         bool showMenu = true;
         while (showMenu)
         {
-            showMenu = MainMenu(playerName);
+            showMenu = MainMenu(playerName, hero);
+      
         }
     }
 
     // displaying main menu
-    public static bool MainMenu(string playerName)
+    public static bool MainMenu(string playerName, Hero hero)
     {
         Console.Clear();
-        // display main menu
+
+        // display main 
         Console.WriteLine("\n~ Main Menu ~");
         Console.WriteLine(" 1. Display statistics.");
         Console.WriteLine(" 2. Display inventory.");
@@ -41,13 +46,13 @@ class Program
         // initiate monsters 
         int gamesPlayed = 0;
 
-        // initiate a new hero
-        Hero hero = new Hero(playerName, 9, 6, 100);
+        bool toggle = true;
 
         switch (Int32.Parse(option.ToString()))
         {
             case 1:
-                displayStatistics(hero);
+                displayStatistics(hero, gamesPlayed);
+                toggle = false;
                 break;
             case 2:
                 displayInventory(hero);
@@ -55,18 +60,22 @@ class Program
             case 3:
                 handleNewFight(hero);
                 gamesPlayed++;
+                toggle = false;
                 break;
             case 4:
-                return false;
-            default:
-                return true;
+                toggle = false;
+                break;
         }
+
+        return toggle;
     }
 
     // handling option 1
-    public static void displayStatistics(Hero hero)
+    public static void displayStatistics(Hero hero, int gamesPlayed)
     {
-        Console.WriteLine(hero.GetHeroStats);
+        Console.WriteLine("~ Stats ~");
+        Console.WriteLine($"Number of games played: {gamesPlayed}");
+        hero.GetHeroStats();
     }
 
     // handling option 2
@@ -169,6 +178,8 @@ class Program
     public static void handleNewFight(Hero hero)
     {
 
+        hero.EquipWeaponOrArmour("sword", 9, true);
+        hero.EquipWeaponOrArmour("chains", 2, false);
         Fight newFight = new Fight(hero);
         
     }
