@@ -10,18 +10,18 @@ class Program
         string playerName = Console.ReadLine();
 
         // initiate a new hero
-        Hero hero = new Hero(playerName, 9, 6, 100);
+        Hero hero = new Hero(playerName, 5, 3, 100);
 
         bool showMenu = true;
         while (showMenu)
         {
-            showMenu = MainMenu(playerName, hero);
+            showMenu = MainMenu(hero);
       
         }
     }
 
     // displaying main menu
-    public static bool MainMenu(string playerName, Hero hero)
+    public static bool MainMenu(Hero hero)
     {
         Console.Clear();
 
@@ -178,8 +178,8 @@ class Program
     public static void handleNewFight(Hero hero)
     {
 
-        hero.EquipWeaponOrArmour("sword", 9, true);
-        hero.EquipWeaponOrArmour("chains", 2, false);
+        hero.EquipWeaponOrArmour("sword", 10, true);
+        hero.EquipWeaponOrArmour("chains", 7, false);
         Fight newFight = new Fight(hero);
         
     }

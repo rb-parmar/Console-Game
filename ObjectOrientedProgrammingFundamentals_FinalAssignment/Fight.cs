@@ -24,65 +24,69 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         {
             // create random monsters
             HashSet<Monster> MonsterList = new HashSet<Monster>();
-            MonsterList.Add(new Monster("PEKKA", 7, 12, 150));
-            MonsterList.Add(new Monster("Electro Dragon", 5, 10, 120));
-            MonsterList.Add(new Monster("Lava Hound", 6, 8, 100));
-            MonsterList.Add(new Monster("Witch", 4, 3, 90));
-            MonsterList.Add(new Monster("Giant", 5, 9, 130));
+            MonsterList.Add(new Monster("PEKKA", 20, 4, 100));
+            MonsterList.Add(new Monster("Electro Dragon", 17, 5, 100));
+            MonsterList.Add(new Monster("Lava Hound", 15, 5, 100));
+            MonsterList.Add(new Monster("Witch", 10, 2, 100));
+            MonsterList.Add(new Monster("Giant", 9, 5, 100));
 
             // get a random monster 
             Random random = new Random();
             int randomMonster = random.Next(MonsterList.Count);
             Monster monster = MonsterList.ElementAt(randomMonster);
 
-            while (hero.CurrentHealth == 0 || monster.CurrentHealth != 0)
+            bool isGameOver = false;
+            while (!isGameOver)
             {
-                HeroTurn(hero, monster);
-                Console.WriteLine(handleWin(hero, monster, MonsterList));
-                Console.WriteLine(handleLose(hero, monster, MonsterList));
+                if (monster.CurrentHealth > 0 && hero.CurrentHealth > 0)
+                {
+                    HeroTurn(hero, monster);
+                    Console.WriteLine(handleWin(hero, monster, MonsterList));
+                    Console.WriteLine(handleLose(hero, monster, MonsterList));
+                } else
+                {
+                    isGameOver = true;
+                }
 
-                MonsterTurn(hero, monster);
-                Console.WriteLine(handleWin(hero, monster, MonsterList));
-                Console.WriteLine(handleLose(hero, monster, MonsterList));
+                if (hero.CurrentHealth > 0 && monster.CurrentHealth > 0)
+                {
+                    MonsterTurn(hero, monster);
+                    Console.WriteLine(handleWin(hero, monster, MonsterList));
+                    Console.WriteLine(handleLose(hero, monster, MonsterList));
+                } else
+                {
+                    isGameOver = true;
+                }
+
             }
+          
         }
 
 
         // method for the hero's turn
-        public int HeroTurn(Hero hero, Monster monster)
+        public void HeroTurn(Hero hero, Monster monster)
         {
             int heroAttack = hero.BaseStrength + hero.heroWeaponPower;
             int damageToMonster = heroAttack - monster.Defence;
 
             monster.setCurrentHealth(damageToMonster);
-            int monsterCurrentHealth = monster.CurrentHealth;
-
-            // get the remaining monster health in percentage
-            int division = (monsterCurrentHealth / monster.OriginalHealth) * 100;
             
-
             Console.WriteLine("\nHero attacked the moster!");
-            Console.WriteLine($"Damage: {damageToMonster}  |  Monster's Health: {division} %");
+            Console.WriteLine($"Damage: {damageToMonster}  |  Monster's Health: {monster.CurrentHealth} %");
 
-            return monsterCurrentHealth;
         }
 
         // method for the monster's turn
-        public int MonsterTurn(Hero hero, Monster monster)
+        public void MonsterTurn(Hero hero, Monster monster)
         {
             int monsterAttack = monster.Strength;
-            int damageToHero = (hero.BaseDefence + hero.heroArmourPower) - monsterAttack;
+            int damageToHero = monsterAttack - hero.BaseDefence - hero.heroArmourPower;
 
             hero.setCurrentHealth(damageToHero);
-            int heroCurrentHealth = hero.CurrentHealth;
-
-            // get the remaining hero health in percentage
-            int division = (heroCurrentHealth / hero.OriginalHealth) * 100;
 
             Console.WriteLine("\nMonster attacked The Hero!");
-            Console.WriteLine($"Damage: {damageToHero}  |  Hero's Health: {division}");
+            Console.WriteLine($"Damage: {damageToHero}  |  Hero's Health: {hero.CurrentHealth}%");
 
-            return heroCurrentHealth;
         }
 
         public string handleWin(Hero hero, Monster monster, HashSet<Monster> monsterList)

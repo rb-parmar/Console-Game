@@ -25,20 +25,14 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         public int OriginalHealth { get { return _OriginalHealth; } }
         public int CurrentHealth { 
             get { return _CurrentHealth; }
-            set
-            {
-                if (value >= 0)
-                {
-                    _CurrentHealth = value;
-                }
-            }
+            set { _CurrentHealth = value; }
         }
         public int heroWeaponPower { get { return _EquippedWeapon.Power; } }
         public int heroArmourPower { get { return _EquippedArmour.Power; } }
 
-        public int setCurrentHealth(int damage)
+        public void setCurrentHealth(int damage)
         {
-            if (CurrentHealth > damage)
+            if (CurrentHealth > damage && damage > 0)
             {
                 CurrentHealth -= damage;
             }
@@ -46,8 +40,6 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             {
                 CurrentHealth = 0;
             }
-
-            return CurrentHealth;
         }
 
         // Constructor for class Hero
