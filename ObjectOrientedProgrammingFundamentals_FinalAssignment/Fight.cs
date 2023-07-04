@@ -59,6 +59,8 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
                 }
 
             }
+
+            Program.MainMenu(hero);
           
         }
 

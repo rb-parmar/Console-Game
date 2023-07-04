@@ -23,7 +23,6 @@ class Program
     // displaying main menu
     public static bool MainMenu(Hero hero)
     {
-        Console.Clear();
 
         // display main 
         Console.WriteLine("\n~ Main Menu ~");
@@ -43,7 +42,6 @@ class Program
             }
         }
 
-        // initiate monsters 
         int gamesPlayed = 0;
 
         bool toggle = true;
@@ -58,8 +56,8 @@ class Program
                 displayInventory(hero);
                 break;
             case 3:
-                handleNewFight(hero);
                 gamesPlayed++;
+                handleNewFight(hero);
                 toggle = false;
                 break;
             case 4:
@@ -74,8 +72,9 @@ class Program
     public static void displayStatistics(Hero hero, int gamesPlayed)
     {
         Console.WriteLine("~ Stats ~");
-        Console.WriteLine($"Number of games played: {gamesPlayed}");
+        Console.WriteLine($"Number of games played: {gamesPlayed}\n");
         hero.GetHeroStats();
+        MainMenu(hero);
     }
 
     // handling option 2
