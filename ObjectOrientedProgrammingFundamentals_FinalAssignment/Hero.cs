@@ -27,7 +27,9 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             get { return _CurrentHealth; }
             set { _CurrentHealth = value; }
         }
+        public string heroWeaponName { get { return _EquippedWeapon.Name; } }
         public int heroWeaponPower { get { return _EquippedWeapon.Power; } }
+        public string heroArmourName { get { return _EquippedArmour.Name; } }
         public int heroArmourPower { get { return _EquippedArmour.Power; } }
 
         public void setCurrentHealth(int damage)
@@ -89,17 +91,8 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         }
         
 
-        // method to get statistics of the hero
-        /*public void GetHeroStats()
-        {
-            Console.WriteLine(" ~ Hero statistics ~ ");
-            Console.WriteLine($"Name: {Name}");
-            Console.WriteLine($"Base strength: {BaseStrength}");
-            Console.WriteLine($"Base defence: {BaseDefence}");
-            Console.WriteLine($"Hero's original health: {OriginalHealth}");
-            Console.WriteLine($"Hero's current health: {CurrentHealth}");
-        }
-        */
+       
+        
         public void GetHeroStats()
         {
             Console.WriteLine(" ~ Hero statistics ~ ");
@@ -115,8 +108,8 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         public void GetInventory()
         {
             Console.WriteLine("The hero is equipped with: ");
-            Console.WriteLine($" 1. Weapon: {_EquippedWeapon.Name}, Power: {_EquippedWeapon.Power}");
-            Console.WriteLine($" 2. Armour: {_EquippedArmour.Name}, Power: {_EquippedArmour.Power}");
+            Console.WriteLine($" 1. Weapon: {heroWeaponName}, Power: {heroWeaponPower}");
+            Console.WriteLine($" 2. Armour: {heroArmourName}, Power: {heroArmourPower}");
         }
 
         // method for equipping a new weapon or armour

@@ -46,6 +46,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
                 } else
                 {
                     isGameOver = true;
+                    break;
                 }
 
                 if (hero.CurrentHealth > 0 && monster.CurrentHealth > 0)
@@ -56,6 +57,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
                 } else
                 {
                     isGameOver = true;
+                    break;
                 }
 
             }
@@ -96,10 +98,10 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             string winStatement = "";
             if (monster.CurrentHealth == 0)
             {
+                hero.setCurrentHealth(hero.OriginalHealth);
                 winStatement = $"\n\nGame Over!!\n~ You have defeated the {monster.Name} ~\nCongratulations {hero.Name}! (^_^) ";
                 monsterList.Remove(monster);
                 DefeatedMonsters.Add(monster);
-                hero.CurrentHealth = hero.OriginalHealth;
                 fightsWon++;
             }
 
@@ -112,6 +114,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             if (hero.CurrentHealth == 0)
             {
                 fightsLost++;
+                hero.setCurrentHealth(hero.OriginalHealth);
                 loseStatement = $"\n\nGame Over!!\n You have been defeated by {monster.Name}!\nBetter luck next time.";
             }
 

@@ -131,12 +131,15 @@ class Program
         {
             case 1:
                 hero.EquipWeaponOrArmour("Sword", 6, true);
+                MainMenu(hero);
                 break;
             case 2:
                 hero.EquipWeaponOrArmour("Laser gun", 9, true);
+                MainMenu(hero);
                 break;
             case 3:
                 hero.EquipWeaponOrArmour("Life saber", 12, true);
+                MainMenu(hero);
                 break;
         }
     }
@@ -163,12 +166,15 @@ class Program
         {
             case 1:
                 hero.EquipWeaponOrArmour("Steel shield", 5, false);
+                MainMenu(hero);
                 break;
             case 2:
                 hero.EquipWeaponOrArmour("Breastplate", 3, false);
+                MainMenu(hero);
                 break;
             case 3:
                 hero.EquipWeaponOrArmour("Studded leather", 7, false);
+                MainMenu(hero);
                 break;
         }
     }
@@ -177,9 +183,9 @@ class Program
     public static void handleNewFight(Hero hero)
     {
 
-        hero.EquipWeaponOrArmour("sword", 10, true);
+/*        hero.EquipWeaponOrArmour("sword", 10, true);
         hero.EquipWeaponOrArmour("chains", 7, false);
-        Fight newFight = new Fight(hero);
+*/        Fight newFight = new Fight(hero);
         
     }
 
