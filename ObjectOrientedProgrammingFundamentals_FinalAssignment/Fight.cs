@@ -70,7 +70,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         // method for the hero's turn
         public void HeroTurn(Hero hero, Monster monster)
         {
-            int heroAttack = hero.BaseStrength + hero.heroWeaponPower;
+            int heroAttack = hero.BaseStrength + hero.GetWeapon.Power;
             int damageToMonster = heroAttack - monster.Defence;
 
             monster.setCurrentHealth(damageToMonster);
@@ -84,7 +84,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         public void MonsterTurn(Hero hero, Monster monster)
         {
             int monsterAttack = monster.Strength;
-            int damageToHero = monsterAttack - hero.BaseDefence - hero.heroArmourPower;
+            int damageToHero = monsterAttack - hero.BaseDefence - hero.GetWeapon.Power;
 
             hero.setCurrentHealth(damageToHero);
 

@@ -16,7 +16,7 @@ class Program
         while (showMenu)
         {
             showMenu = MainMenu(hero);
-      
+
         }
     }
 
@@ -99,7 +99,7 @@ class Program
         {
             case 1:
                 displayInventoryOption1(hero);
-                break; 
+                break;
             case 2:
                 displayInventoryOption2(hero);
                 break;
@@ -131,15 +131,12 @@ class Program
         {
             case 1:
                 hero.EquipWeaponOrArmour("Sword", 6, true);
-                MainMenu(hero);
                 break;
             case 2:
                 hero.EquipWeaponOrArmour("Laser gun", 9, true);
-                MainMenu(hero);
                 break;
             case 3:
                 hero.EquipWeaponOrArmour("Life saber", 12, true);
-                MainMenu(hero);
                 break;
         }
     }
@@ -166,15 +163,12 @@ class Program
         {
             case 1:
                 hero.EquipWeaponOrArmour("Steel shield", 5, false);
-                MainMenu(hero);
                 break;
             case 2:
                 hero.EquipWeaponOrArmour("Breastplate", 3, false);
-                MainMenu(hero);
                 break;
             case 3:
                 hero.EquipWeaponOrArmour("Studded leather", 7, false);
-                MainMenu(hero);
                 break;
         }
     }
@@ -182,11 +176,36 @@ class Program
     // handling option 3
     public static void handleNewFight(Hero hero)
     {
+        HashSet<Weapon> weapons = new HashSet<Weapon>();
+        weapons.Add(new Weapon("Life saber", 12));
+        weapons.Add(new Weapon("Laser gun", 9));
+        weapons.Add(new Weapon("Sword", 6));
 
-/*        hero.EquipWeaponOrArmour("sword", 10, true);
-        hero.EquipWeaponOrArmour("chains", 7, false);
-*/        Fight newFight = new Fight(hero);
-        
+        Random random = new Random();
+        int index = random.Next(0, weapons.Count);
+        Weapon equipWeapon = weapons.ElementAt(index);
+
+        if (hero.GetWeapon == null)
+        {
+            hero.EquipWeaponOrArmour(equipWeapon.Name, equipWeapon.Power, true);
+        }
+
+        HashSet<Armour> armours = new HashSet<Armour>();
+        armours.Add(new Armour("Shield", 5));
+        armours.Add(new Armour("Breastplate", 3));
+        armours.Add(new Armour("Studded leather", 7));
+
+        Random random1 = new Random();
+        int indexArmour = random1.Next(0, armours.Count);
+        Armour equipArmour = armours.ElementAt(indexArmour);
+
+        if (hero.GetArmour == null)
+        {
+            hero.EquipWeaponOrArmour(equipArmour.Name, equipArmour.Power, false);
+        }
+
+        Fight newFight = new Fight(hero);
+
     }
 
 }
