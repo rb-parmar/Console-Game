@@ -23,12 +23,13 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         public int BaseStrength { get { return _BaseStrength; } }
         public int BaseDefence { get { return _BaseDefence; } }
         public int OriginalHealth { get { return _OriginalHealth; } }
-        public int CurrentHealth { 
+        public int CurrentHealth
+        {
             get { return _CurrentHealth; }
             set { _CurrentHealth = value; }
         }
-        public int heroWeaponPower { get { return _EquippedWeapon.Power; } }
-        public int heroArmourPower { get { return _EquippedArmour.Power; } }
+        public Weapon GetWeapon { get { return _EquippedWeapon; } }
+        public Armour GetArmour { get { return _EquippedArmour; } }
 
         public void setCurrentHealth(int damage)
         {
@@ -44,14 +45,15 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
 
         // Constructor for class Hero
         public Hero(
-            string heroName, int baseStrength, int baseDefence, 
+            string heroName, int baseStrength, int baseDefence,
             int originalHealth)
         {
             // validating hero name
             if (heroName.Length <= 0)
             {
                 Console.WriteLine("Hero name cannot be empty.");
-            } else
+            }
+            else
             {
                 _Name = heroName;
             }
@@ -60,7 +62,8 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             if (baseStrength <= 0)
             {
                 Console.WriteLine("Base strenght cannot be less than 0.");
-            } else
+            }
+            else
             {
                 _BaseStrength = baseStrength;
             }
@@ -79,7 +82,8 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             if (originalHealth <= 0)
             {
                 Console.WriteLine("Original health cannot be below 0.");
-            } else
+            }
+            else
             {
                 _OriginalHealth = originalHealth;
             }
@@ -87,19 +91,9 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             // intial current health will be the same as original health
             _CurrentHealth = originalHealth;
         }
-        
+
 
         // method to get statistics of the hero
-        /*public void GetHeroStats()
-        {
-            Console.WriteLine(" ~ Hero statistics ~ ");
-            Console.WriteLine($"Name: {Name}");
-            Console.WriteLine($"Base strength: {BaseStrength}");
-            Console.WriteLine($"Base defence: {BaseDefence}");
-            Console.WriteLine($"Hero's original health: {OriginalHealth}");
-            Console.WriteLine($"Hero's current health: {CurrentHealth}");
-        }
-        */
         public void GetHeroStats()
         {
             Console.WriteLine(" ~ Hero statistics ~ ");
@@ -108,19 +102,19 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             Console.WriteLine($"Base defence: {BaseDefence}");
             Console.WriteLine($"Hero's original health: {OriginalHealth}");
             Console.WriteLine($"Hero's current health: {CurrentHealth}");
-            
+
         }
 
         // method to get the items the hero is equipped with
         public void GetInventory()
         {
             Console.WriteLine("The hero is equipped with: ");
-            Console.WriteLine($" 1. Weapon: {_EquippedWeapon.Name}, Power: {_EquippedWeapon.Power}");
-            Console.WriteLine($" 2. Armour: {_EquippedArmour.Name}, Power: {_EquippedArmour.Power}");
+            Console.WriteLine($" 1. Weapon: {GetWeapon.Name}, Power: {GetWeapon.Power}");
+            Console.WriteLine($" 2. Armour: {GetArmour.Name}, Power: {GetArmour.Power}");
         }
 
         // method for equipping a new weapon or armour
-        public void EquipWeaponOrArmour(string  itemName, int itemPower, bool determiner)
+        public void EquipWeaponOrArmour(string itemName, int itemPower, bool determiner)
         {
             if (string.IsNullOrWhiteSpace(itemName) || itemName.Length < 0)
             {
@@ -129,16 +123,17 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             else if (itemPower <= 0)
             {
                 Console.WriteLine("\nWeapon power should be more than 0.");
-            } 
+            }
             else if (determiner) // if true
             {
                 _EquippedWeapon = new Weapon(itemName, itemPower);
-            } else
+            }
+            else
             {
                 _EquippedArmour = new Armour(itemName, itemPower);
             }
         }
 
-    
+
     }
 }

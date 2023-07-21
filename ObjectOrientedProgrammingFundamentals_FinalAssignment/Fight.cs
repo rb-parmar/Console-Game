@@ -70,7 +70,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         // method for the hero's turn
         public void HeroTurn(Hero hero, Monster monster)
         {
-            int heroAttack = hero.BaseStrength + hero.heroWeaponPower;
+            int heroAttack = hero.BaseStrength + hero.GetWeapon.Power;
             int damageToMonster = heroAttack - monster.Defence;
 
             monster.setCurrentHealth(damageToMonster);
@@ -84,7 +84,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         public void MonsterTurn(Hero hero, Monster monster)
         {
             int monsterAttack = monster.Strength;
-            int damageToHero = monsterAttack - hero.BaseDefence - hero.heroArmourPower;
+            int damageToHero = monsterAttack - hero.BaseDefence - hero.GetWeapon.Power;
 
             hero.setCurrentHealth(damageToHero);
 
@@ -98,10 +98,10 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             string winStatement = "";
             if (monster.CurrentHealth == 0)
             {
+                hero.setCurrentHealth(hero.OriginalHealth);
                 winStatement = $"\n\nGame Over!!\n~ You have defeated the {monster.Name} ~\nCongratulations {hero.Name}! (^_^) ";
                 monsterList.Remove(monster);
                 DefeatedMonsters.Add(monster);
-                hero.CurrentHealth = hero.OriginalHealth;
                 fightsWon++;
             }
 
@@ -114,6 +114,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
             if (hero.CurrentHealth == 0)
             {
                 fightsLost++;
+                hero.setCurrentHealth(hero.OriginalHealth);
                 loseStatement = $"\n\nGame Over!!\n You have been defeated by {monster.Name}!\nBetter luck next time.";
             }
 

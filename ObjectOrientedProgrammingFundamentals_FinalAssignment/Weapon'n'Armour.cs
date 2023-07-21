@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
 {
-    abstract class Weapon_n_Armour
+    public abstract class Weapon_n_Armour
     {
         // fields
         private string _Name;
@@ -28,7 +28,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         }
     }
 
-    class Weapon : Weapon_n_Armour
+    public class Weapon : Weapon_n_Armour
     {
         public Weapon(string weaponName, int weaponPower)
         {
@@ -37,7 +37,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
         }
     }
 
-    class Armour : Weapon_n_Armour
+    public class Armour : Weapon_n_Armour
     {
         public Armour(string armourName, int armourPower)
         {
