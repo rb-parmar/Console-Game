@@ -61,7 +61,7 @@ class Program
                 displayInventory(hero);
                 break;
             case 3:
-                gamesPlayed++;
+                gamesPlayed = gamesPlayed + 1;
                 handleNewFight(hero);
                 toggle = false;
                 break;
