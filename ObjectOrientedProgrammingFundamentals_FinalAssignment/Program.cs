@@ -8,6 +8,11 @@ class Program
         // opt user for name
         Console.WriteLine("Please enter your name:");
         string playerName = Console.ReadLine();
+        while (string.IsNullOrWhiteSpace(playerName)) 
+        {
+            Console.WriteLine("Please enter a valid name");
+            playerName = Console.ReadLine();
+        }
 
         // initiate a new hero
         Hero hero = new Hero(playerName, 5, 3, 100);

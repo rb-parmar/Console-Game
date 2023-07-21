@@ -46,6 +46,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
                 } else
                 {
                     isGameOver = true;
+                    break;
                 }
 
                 if (hero.CurrentHealth > 0 && monster.CurrentHealth > 0)
@@ -56,6 +57,7 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
                 } else
                 {
                     isGameOver = true;
+                    break;
                 }
 
             }
