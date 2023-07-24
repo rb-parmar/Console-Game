@@ -61,7 +61,7 @@ class Program
                 displayInventory(hero);
                 break;
             case 3:
-                gamesPlayed = gamesPlayed + 1;
+                gamesPlayed += 1;
                 handleNewFight(hero);
                 toggle = false;
                 break;
@@ -144,6 +144,8 @@ class Program
                 hero.EquipWeaponOrArmour("Life saber", 12, true);
                 break;
         }
+
+        MainMenu(hero);
     }
 
     // handling option 2 -> 2
@@ -176,6 +178,8 @@ class Program
                 hero.EquipWeaponOrArmour("Studded leather", 7, false);
                 break;
         }
+
+        MainMenu(hero);
     }
 
     // handling option 3
@@ -210,6 +214,7 @@ class Program
         }
 
         Fight newFight = new Fight(hero);
+        
 
     }
 

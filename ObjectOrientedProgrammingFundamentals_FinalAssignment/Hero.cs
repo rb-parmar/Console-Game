@@ -33,7 +33,11 @@ namespace ObjectOrientedProgrammingFundamentals_FinalAssignment
 
         public void setCurrentHealth(int damage)
         {
-            if (CurrentHealth > damage && damage > 0)
+            if (damage == OriginalHealth)
+            {
+                CurrentHealth = damage;
+            } 
+            else if (CurrentHealth > damage && damage > 0)
             {
                 CurrentHealth -= damage;
             }
